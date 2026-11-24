@@ -1,6 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useRouter, usePathname } from "next/navigation";
+import { useSession } from "next-auth/react";
 import { AppSidebar } from "@/components/layout/AppSidebar";
 import { TopNavbar } from "@/components/layout/TopNavbar";
 import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
@@ -10,15 +12,28 @@ import { PasskeyPromptModal } from "@/components/auth/PasskeyPromptModal";
 import { UploadModal } from "@/components/drive/UploadModal";
 import { QuickTransferModal } from "@/components/drive/QuickTransferModal";
 import { SmartStorageCleanerModal } from "@/components/drive/SmartStorageCleanerModal";
+import { Logo } from "@/components/ui/Logo";
 import { useQueryClient } from "@tanstack/react-query";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
+  const { data: session, status } = useSession();
+  const router = useRouter();
+  const pathname = usePathname();
+
   const [uploadOpen, setUploadOpen] = useState(false);
   const [quickTransferOpen, setQuickTransferOpen] = useState(false);
   const [cleanerOpen, setCleanerOpen] = useState(false);
   const [signOutOpen, setSignOutOpen] = useState(false);
   const [passkeyPromptOpen, setPasskeyPromptOpen] = useState(false);
   const queryClient = useQueryClient();
+
+  // Defense-in-depth: Redirect to login immediately if session is unauthenticated
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      const targetUrl = pathname ? `/login?callbackUrl=${encodeURIComponent(pathname)}` : "/login";
+      router.replace(targetUrl);
+    }
+  }, [status, pathname, router]);
 
   // Listen for custom events (cleaner, signout, passkey prompt)
   React.useEffect(() => {
@@ -75,6 +90,27 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   const handleUploadComplete = () => {
     queryClient.invalidateQueries({ queryKey: ["files"] });
   };
+
+  // Prevent any unauthenticated content flash or layout leak
+  if (status === "loading") {
+    return (
+      <div className="min-h-screen bg-[#15171c] flex flex-col items-center justify-center p-4 select-none">
+        <div className="relative flex items-center justify-center">
+          <div className="w-14 h-14 rounded-full border-2 border-indigo-500/20 border-t-indigo-500 animate-spin" />
+          <div className="absolute">
+            <Logo size="sm" />
+          </div>
+        </div>
+        <p className="mt-4 text-xs font-mono text-slate-400 tracking-wider animate-pulse">
+          ESTABLISHING SECURE ORBIT...
+        </p>
+      </div>
+    );
+  }
+
+  if (status === "unauthenticated" || !session) {
+    return null;
+  }
 
   return (
     <div className="flex min-h-screen bg-[#15171c] text-slate-100">

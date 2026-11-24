@@ -156,7 +156,7 @@ export default function SignupPage() {
           type="button"
           onClick={handleGoogleSignUp}
           disabled={googleLoading || loading}
-          className="w-full flex items-center justify-center gap-3 neu-btn py-2.5 rounded-xl transition-all text-xs text-slate-100 font-semibold cursor-pointer active:scale-[0.98]"
+          className="w-full flex items-center justify-center gap-3 bg-[#1e222b] hover:bg-[#252a36] text-white border border-white/[0.08] shadow-md py-2.5 rounded-xl transition-all text-xs font-semibold cursor-pointer active:scale-[0.98]"
         >
           <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">
             <path
@@ -176,13 +176,13 @@ export default function SignupPage() {
               d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
             />
           </svg>
-          <span className="text-slate-100 font-semibold">{googleLoading ? "Connecting to Google..." : "Continue with Google (Free & Instant)"}</span>
+          <span className="text-white font-semibold">{googleLoading ? "Connecting to Google..." : "Continue with Google (Free & Instant)"}</span>
         </button>
 
         {/* Divider */}
         <div className="relative flex items-center justify-center">
           <div className="border-t border-[#262a34] w-full" />
-          <span className="bg-[#181b22] px-3 py-0.5 text-[10px] sm:text-[11px] text-slate-400 uppercase tracking-wider font-semibold shrink-0 rounded-md border border-white/[0.04]">
+          <span className="bg-[#181b22] px-3 py-0.5 text-[10px] sm:text-[11px] text-slate-300 uppercase tracking-wider font-semibold shrink-0 rounded-md border border-white/[0.08]">
             or complete direct registration
           </span>
           <div className="border-t border-[#262a34] w-full" />
@@ -193,7 +193,7 @@ export default function SignupPage() {
           {/* Full Name & User ID (2 columns on tablet/desktop) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="space-y-1">
-              <label className="text-xs font-semibold text-slate-300">Full Name</label>
+              <label className="text-xs font-semibold text-slate-200">Full Name</label>
               <div className="relative">
                 <input
                   type="text"
@@ -201,14 +201,14 @@ export default function SignupPage() {
                   placeholder="Alex Mercer"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full neu-inset rounded-xl p-2.5 text-slate-100 text-xs focus:outline-none pl-9 transition-colors"
+                  className="w-full neu-inset rounded-xl p-2.5 text-slate-100 placeholder:text-slate-500 text-xs focus:outline-none pl-9 transition-colors"
                 />
                 <User className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-3" />
               </div>
             </div>
 
             <div className="space-y-1">
-              <label className="text-xs font-semibold text-slate-300">User ID / Username</label>
+              <label className="text-xs font-semibold text-slate-200">User ID / Username</label>
               <div className="relative">
                 <input
                   type="text"
@@ -216,7 +216,7 @@ export default function SignupPage() {
                   placeholder="alex_orbitr"
                   value={handle}
                   onChange={(e) => setHandle(e.target.value.toLowerCase().replace(/[^a-z0-9_-]/g, ""))}
-                  className="w-full neu-inset rounded-xl p-2.5 text-slate-100 text-xs focus:outline-none pl-9 font-mono transition-colors"
+                  className="w-full neu-inset rounded-xl p-2.5 text-slate-100 placeholder:text-slate-500 text-xs focus:outline-none pl-9 font-mono transition-colors"
                 />
                 <AtSign className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-3" />
               </div>
@@ -226,7 +226,7 @@ export default function SignupPage() {
           {/* Email Address & Date of Birth */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="space-y-1">
-              <label className="text-xs font-semibold text-slate-300">Email Address</label>
+              <label className="text-xs font-semibold text-slate-200">Email Address</label>
               <div className="relative">
                 <input
                   type="email"
@@ -234,7 +234,7 @@ export default function SignupPage() {
                   placeholder="alex@example.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full neu-inset rounded-xl p-2.5 text-slate-100 text-xs focus:outline-none pl-9 transition-colors"
+                  className="w-full neu-inset rounded-xl p-2.5 text-slate-100 placeholder:text-slate-500 text-xs focus:outline-none pl-9 transition-colors"
                 />
                 <Mail className="w-3.5 h-3.5 text-slate-400 absolute left-3 top-3" />
               </div>

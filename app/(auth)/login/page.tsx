@@ -182,7 +182,7 @@ export default function LoginPage() {
           type="button"
           onClick={handleGoogleSignIn}
           disabled={googleLoading || loading || passkeyLoading}
-          className="w-full flex items-center justify-center gap-3 neu-btn py-2.5 rounded-xl transition-all text-xs text-slate-100 font-semibold cursor-pointer active:scale-[0.98]"
+          className="w-full flex items-center justify-center gap-3 bg-[#1e222b] hover:bg-[#252a36] text-white border border-white/[0.08] shadow-md py-2.5 rounded-xl transition-all text-xs font-semibold cursor-pointer active:scale-[0.98]"
         >
           <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">
             <path
@@ -202,7 +202,7 @@ export default function LoginPage() {
               d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
             />
           </svg>
-          <span className="text-slate-100 font-semibold">{googleLoading ? "Connecting to Google..." : "Continue with Google"}</span>
+          <span className="text-white font-semibold">{googleLoading ? "Connecting to Google..." : "Continue with Google"}</span>
         </button>
 
         {/* Option 2: Sign in with Passkey / Biometrics */}
@@ -210,16 +210,16 @@ export default function LoginPage() {
           type="button"
           onClick={handlePasskeySignIn}
           disabled={passkeyLoading || loading || googleLoading}
-          className="w-full flex items-center justify-center gap-2.5 neu-btn py-2.5 rounded-xl text-indigo-300 font-semibold transition-all text-xs cursor-pointer active:scale-[0.98]"
+          className="w-full flex items-center justify-center gap-2.5 bg-indigo-950/40 hover:bg-indigo-900/50 text-indigo-200 hover:text-white border border-indigo-500/25 py-2.5 rounded-xl font-semibold transition-all text-xs cursor-pointer active:scale-[0.98]"
         >
           <Fingerprint className="w-4 h-4 text-indigo-400" />
-          <span>{passkeyLoading ? "Verifying Passkey..." : "Sign in with Passkey"}</span>
+          <span>{passkeyLoading ? "Verifying Passkey..." : "Sign in with Passkey (PIN / Fingerprint)"}</span>
         </button>
 
         {/* Divider */}
         <div className="relative flex items-center justify-center">
           <div className="border-t border-[#262a34] w-full" />
-          <span className="bg-[#181b22] px-3 py-0.5 text-[10px] sm:text-[11px] text-slate-400 uppercase tracking-wider font-semibold shrink-0 rounded-md border border-white/[0.04]">
+          <span className="bg-[#181b22] px-3 py-0.5 text-[10px] sm:text-[11px] text-slate-300 uppercase tracking-wider font-semibold shrink-0 rounded-md border border-white/[0.08]">
             or sign in with password
           </span>
           <div className="border-t border-[#262a34] w-full" />
@@ -228,7 +228,7 @@ export default function LoginPage() {
         {/* Option 3: Sign in with Email / User ID & Password */}
         <form onSubmit={handleSubmit} className="space-y-4 text-left">
           <div className="space-y-1.5">
-            <label className="text-xs font-semibold text-slate-300">Email Address or User ID</label>
+            <label className="text-xs font-semibold text-slate-200">Email Address or User ID</label>
             <div className="relative">
               <input
                 type="text"
@@ -236,7 +236,7 @@ export default function LoginPage() {
                 placeholder="alex@example.com or alex_orbitr"
                 value={identifier}
                 onChange={(e) => setIdentifier(e.target.value)}
-                className="w-full neu-inset rounded-xl p-3 text-slate-100 text-xs focus:outline-none pl-10 transition-colors"
+                className="w-full neu-inset rounded-xl p-3 text-slate-100 placeholder:text-slate-500 text-xs focus:outline-none pl-10 transition-colors"
               />
               <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
             </div>
@@ -244,7 +244,7 @@ export default function LoginPage() {
 
           <div className="space-y-1.5">
             <div className="flex items-center justify-between">
-              <label className="text-xs font-semibold text-slate-300">Password</label>
+              <label className="text-xs font-semibold text-slate-200">Password</label>
               <Link
                 href="/forgot-password"
                 className="text-[11px] text-indigo-400 hover:text-indigo-300 font-medium transition-colors"
@@ -259,7 +259,7 @@ export default function LoginPage() {
                 placeholder="Enter your account password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="w-full neu-inset rounded-xl p-3 text-slate-100 text-xs focus:outline-none pl-10 pr-10 transition-colors"
+                className="w-full neu-inset rounded-xl p-3 text-slate-100 placeholder:text-slate-500 text-xs focus:outline-none pl-10 pr-10 transition-colors"
               />
               <Lock className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
               <button
