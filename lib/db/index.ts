@@ -16,10 +16,10 @@ export function getDb() {
 
   const connectionString = process.env.DATABASE_URL;
 
-  // Use Neon if live production/remote database URL provided
+  // Use Neon / remote PostgreSQL if DATABASE_URL provided
   if (
     connectionString &&
-    connectionString.includes("neon.tech")
+    (connectionString.includes("neon.tech") || connectionString.startsWith("postgres"))
   ) {
     const pool = new Pool({ connectionString });
     dbInstance = drizzleNeon(pool, { schema });

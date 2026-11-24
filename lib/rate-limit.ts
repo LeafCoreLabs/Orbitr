@@ -30,15 +30,15 @@ class MemoryRatelimit {
   }
 }
 
-const hasUpstash = Boolean(
-  process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN
-);
+const upstashUrl = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
+const upstashToken = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
+const hasUpstash = Boolean(upstashUrl && upstashToken);
 
 let redis: Redis | null = null;
-if (hasUpstash) {
+if (hasUpstash && upstashUrl && upstashToken) {
   redis = new Redis({
-    url: process.env.UPSTASH_REDIS_REST_URL!,
-    token: process.env.UPSTASH_REDIS_REST_TOKEN!,
+    url: upstashUrl,
+    token: upstashToken,
   });
 }
 
