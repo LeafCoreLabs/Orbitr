@@ -1,0 +1,14 @@
+.pglite
+.pglite/
+.freebuff
+.freebuff/
+test-results/
+playwright-report/
+blob-report/
+playwright/
+scripts/
+tests/
+*.tsbuildinfo
+screenshot-*.png
+.env*.local
+.env
