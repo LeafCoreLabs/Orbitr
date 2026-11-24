@@ -12,7 +12,8 @@ import { PasskeyPromptModal } from "@/components/auth/PasskeyPromptModal";
 import { UploadModal } from "@/components/drive/UploadModal";
 import { QuickTransferModal } from "@/components/drive/QuickTransferModal";
 import { SmartStorageCleanerModal } from "@/components/drive/SmartStorageCleanerModal";
-import { Logo } from "@/components/ui/Logo";
+import { AuroraCanvas } from "@/components/ui/AuroraCanvas";
+import { BrandLogo } from "@/components/ui/BrandLogo";
 import { useQueryClient } from "@tanstack/react-query";
 
 export default function AppLayout({ children }: { children: React.ReactNode }) {
@@ -94,14 +95,15 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   // Prevent any unauthenticated content flash or layout leak
   if (status === "loading") {
     return (
-      <div className="min-h-screen bg-[#15171c] flex flex-col items-center justify-center p-4 select-none">
+      <div className="min-h-screen bg-[#040917] flex flex-col items-center justify-center p-4 select-none relative">
+        <AuroraCanvas intensity="calm" />
         <div className="relative flex items-center justify-center">
-          <div className="w-14 h-14 rounded-full border-2 border-indigo-500/20 border-t-indigo-500 animate-spin" />
+          <div className="w-14 h-14 rounded-full border-2 border-sky-500/20 border-t-sky-400 animate-spin" />
           <div className="absolute">
-            <Logo size="sm" />
+            <BrandLogo size="sm" showWordmark={false} />
           </div>
         </div>
-        <p className="mt-4 text-xs font-mono text-slate-400 tracking-wider animate-pulse">
+        <p className="mt-4 text-xs font-mono text-sky-200/80 tracking-wider animate-pulse">
           ESTABLISHING SECURE ORBIT...
         </p>
       </div>
@@ -113,7 +115,8 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <div className="flex min-h-screen bg-[#15171c] text-slate-100">
+    <div className="relative flex min-h-screen bg-transparent text-slate-100">
+      <AuroraCanvas intensity="calm" />
       <AppSidebar
         onOpenUpload={() => setUploadOpen(true)}
         onOpenQuickTransfer={() => setQuickTransferOpen(true)}
@@ -121,7 +124,7 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
         onOpenSignOut={() => setSignOutOpen(true)}
       />
 
-      <div className="flex-1 flex flex-col min-w-0 pb-16 md:pb-0">
+      <div className="relative z-10 flex-1 flex flex-col min-w-0 pb-16 md:pb-0">
         <TopNavbar
           onOpenQuickTransfer={() => setQuickTransferOpen(true)}
           onOpenSignOut={() => setSignOutOpen(true)}

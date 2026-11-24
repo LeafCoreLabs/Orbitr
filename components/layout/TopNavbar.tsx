@@ -2,7 +2,7 @@
 
 import React from "react";
 import { Search, Command, QrCode, LogOut, ShieldCheck } from "lucide-react";
-import { Logo } from "@/components/ui/Logo";
+import { BrandLogo } from "@/components/ui/BrandLogo";
 
 interface TopNavbarProps {
   onOpenQuickTransfer?: () => void;
@@ -17,10 +17,10 @@ export function TopNavbar({ onOpenQuickTransfer, onOpenSignOut }: TopNavbarProps
   };
 
   return (
-    <header className="sticky top-0 z-30 flex items-center justify-between h-16 px-4 md:px-8 bg-[#15171c]/85 backdrop-blur-md border-b border-[#22252e] shadow-sm">
+    <header className="sticky top-0 z-30 flex items-center justify-between h-16 px-4 md:px-8 bg-[rgba(40,22,52,0.68)] backdrop-blur-2xl border-b border-white/25 shadow-sm text-white">
       {/* Mobile Logo */}
       <div className="flex items-center gap-3 md:hidden">
-        <Logo size="sm" />
+        <BrandLogo size="sm" tone="dark" />
       </div>
 
       {/* Global Search Bar (Cmd+K) */}

@@ -1,0 +1,10 @@
+{
+  "description": "A polished cloud storage platform for individuals and teams to organize, search, share, and manage files in a secure, collaborative workspace.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

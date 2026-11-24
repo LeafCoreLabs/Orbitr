@@ -3,7 +3,8 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { Logo } from "@/components/ui/Logo";
+import { BrandLogo } from "@/components/ui/BrandLogo";
+import { AuroraCanvas } from "@/components/ui/AuroraCanvas";
 import {
   Mail,
   Lock,
@@ -118,21 +119,22 @@ export default function ForgotPasswordPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center p-4 bg-[#15171c] text-slate-100 relative overflow-hidden">
+    <div className="min-h-screen flex items-center justify-center p-4 bg-[#040917] text-slate-100 relative overflow-hidden">
+      <AuroraCanvas intensity="calm" />
       {/* Top Left Navigation Back Button */}
       <div className="absolute top-5 left-5 sm:top-8 sm:left-8 z-20">
         <Link
           href="/login"
-          className="inline-flex items-center gap-2 text-xs font-semibold text-slate-300 hover:text-white px-3.5 py-2 rounded-xl neu-btn transition-all group"
+          className="inline-flex items-center gap-2 text-xs font-semibold text-sky-100 hover:text-white px-4 py-2 rounded-full neu-btn transition-all group"
         >
-          <ArrowLeft className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-400 group-hover:-translate-x-0.5 transition-transform" />
+          <ArrowLeft className="w-3.5 h-3.5 text-sky-300 group-hover:-translate-x-0.5 transition-transform" />
           <span>Back to Sign In</span>
         </Link>
       </div>
       <div className="relative w-full max-w-md shader-card p-7 sm:p-8 space-y-5 shadow-2xl">
         <div className="text-center space-y-1.5">
           <div className="flex justify-center mb-1">
-            <Logo size="md" />
+            <BrandLogo size="md" />
           </div>
           <h1 className="text-xl font-bold text-slate-100">
             {step === "request" ? "Reset Your Password" : "Enter Verification Code"}

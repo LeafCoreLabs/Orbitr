@@ -16,7 +16,7 @@ import {
   Sparkles,
   LogOut,
 } from "lucide-react";
-import { Logo } from "@/components/ui/Logo";
+import { BrandLogo } from "@/components/ui/BrandLogo";
 import { cn, formatBytes } from "@/lib/utils";
 import { useQuery } from "@tanstack/react-query";
 import { useSession } from "next-auth/react";
@@ -63,17 +63,17 @@ export function AppSidebar({
   ];
 
   return (
-    <aside className="hidden md:flex flex-col w-64 bg-[#15171c] border-r border-[#22252e] shadow-[4px_0_24px_rgba(0,0,0,0.8)] h-screen sticky top-0 p-5 shrink-0 select-none">
+    <aside className="relative z-10 hidden md:flex flex-col w-64 bg-[rgba(40,22,52,0.72)] backdrop-blur-2xl border-r border-white/25 shadow-[4px_0_32px_rgba(36,18,44,0.22)] h-screen sticky top-0 p-5 shrink-0 select-none text-white">
       {/* Brand Header */}
-      <div className="flex items-center justify-between pb-6 border-b border-[#22252e]">
-        <Logo size="md" />
+      <div className="flex items-center justify-between pb-6 border-b border-white/15">
+        <BrandLogo size="md" tone="dark" />
       </div>
 
       {/* Primary Action Button */}
       <div className="pt-6 pb-4">
         <button
           onClick={onOpenUpload}
-          className="w-full flex items-center justify-center gap-2.5 neu-btn-primary font-semibold py-2.5 px-4 rounded-xl shadow-md transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+          className="w-full flex items-center justify-center gap-2.5 neu-btn-primary font-semibold py-2.5 px-4 rounded-full shadow-md transition-all hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
         >
           <Plus className="w-5 h-5 stroke-[2.2]" />
           <span>Upload File</span>
@@ -90,23 +90,23 @@ export function AppSidebar({
               key={item.href}
               href={item.href}
               className={cn(
-                "flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all",
+                "flex items-center justify-between px-3.5 py-2.5 rounded-2xl text-sm font-medium transition-all",
                 isActive
-                  ? "neu-inset text-indigo-400 font-bold"
-                  : "text-slate-400 hover:text-slate-200 hover:bg-[#1a1d24]"
+                  ? "bg-sky-500/18 border border-sky-300/30 text-sky-200 font-semibold shadow-[inset_0_1px_0_rgba(186,230,253,0.2)]"
+                  : "text-slate-400 hover:text-white hover:bg-sky-400/10 border border-transparent"
               )}
             >
               <div className="flex items-center gap-3">
                 <Icon
                   className={cn(
                     "w-4 h-4",
-                    isActive ? "text-indigo-400" : "text-slate-500"
+                    isActive ? "text-sky-300" : "text-slate-400"
                   )}
                 />
                 <span>{item.label}</span>
               </div>
               {item.badge && (
-                <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#1b1930] text-indigo-300 border border-indigo-500/30 font-mono">
+                <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-sky-950/80 text-sky-300 border border-sky-400/30 font-mono">
                   {item.badge}
                 </span>
               )}

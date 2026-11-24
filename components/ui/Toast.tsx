@@ -64,13 +64,13 @@ export function Toaster() {
               exit={{ opacity: 0, y: -10, scale: 0.95 }}
               transition={{ duration: 0.2 }}
               className={cn(
-                "pointer-events-auto flex items-center justify-between gap-3 p-4 rounded-xl shadow-2xl border text-sm backdrop-blur-xl",
+                "pointer-events-auto flex items-center justify-between gap-3 px-4 py-3 rounded-2xl shadow-[inset_0_1px_1px_rgba(224,242,254,0.25),0_22px_48px_-12px_rgba(1,4,16,0.85)] border text-xs backdrop-blur-3xl",
                 t.type === "success" &&
-                  "bg-emerald-950/80 border-emerald-500/30 text-emerald-200",
+                  "bg-[#0A1838]/92 border-emerald-400/35 text-emerald-100",
                 t.type === "error" &&
-                  "bg-rose-950/80 border-rose-500/30 text-rose-200",
+                  "bg-[#1F0B18]/92 border-rose-400/35 text-rose-100",
                 t.type === "info" &&
-                  "bg-slate-900/90 border-slate-700/60 text-slate-100"
+                  "bg-[#0A1838]/92 border-sky-200/25 text-slate-100"
               )}
             >
               <div className="flex items-center gap-3">
