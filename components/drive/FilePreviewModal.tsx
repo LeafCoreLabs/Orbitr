@@ -2,12 +2,13 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Download, ShieldAlert, FileText } from "lucide-react";
+import { X, Download, ShieldAlert, FileText, Trash2 } from "lucide-react";
 import { formatBytes } from "@/lib/utils";
 
 interface FilePreviewModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onDelete?: (file: { id: string; name: string }) => void;
   file?: {
     id: string;
     name: string;
@@ -25,6 +26,7 @@ export function FilePreviewModal({
   isOpen,
   onClose,
   file,
+  onDelete,
   viewOnly = false,
   watermark = false,
   watermarkText = "Confidential - Orbitr Drive",
@@ -86,16 +88,29 @@ export function FilePreviewModal({
           </p>
         </div>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5">
           {!viewOnly && downloadUrl && (
             <a
               href={downloadUrl}
               download={file.name}
-              className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-sky-500/20 text-sky-300 hover:bg-sky-500/30 text-xs font-medium transition-colors"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-500/20 text-sky-300 hover:bg-sky-500/30 text-xs font-medium transition-colors"
             >
-              <Download className="w-4 h-4" />
+              <Download className="w-3.5 h-3.5" />
               <span>Download</span>
             </a>
+          )}
+          {!viewOnly && onDelete && (
+            <button
+              onClick={() => {
+                onDelete(file);
+                onClose();
+              }}
+              title="Move to trash"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-rose-500/20 text-rose-300 hover:bg-rose-500/30 text-xs font-medium transition-colors cursor-pointer"
+            >
+              <Trash2 className="w-3.5 h-3.5" />
+              <span>Delete</span>
+            </button>
           )}
           {viewOnly && (
             <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs font-medium">

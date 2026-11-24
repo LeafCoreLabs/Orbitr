@@ -152,15 +152,15 @@ export default function DropZonesPage() {
                       Destination Folder: {folder.name}
                     </span>
                     {isClosed ? (
-                      <span className="px-2 py-0.5 rounded-md text-[10px] font-mono bg-rose-50 text-rose-700 border border-rose-200 font-semibold">
+                      <span className="px-2 py-0.5 rounded-md text-[10px] font-mono bg-rose-950/60 text-rose-300 border border-rose-500/30 font-semibold">
                         Closed
                       </span>
                     ) : isExpired ? (
-                      <span className="px-2 py-0.5 rounded-md text-[10px] font-mono bg-amber-50 text-amber-700 border border-amber-200 font-semibold">
+                      <span className="px-2 py-0.5 rounded-md text-[10px] font-mono bg-amber-950/60 text-amber-300 border border-amber-500/30 font-semibold">
                         Expired
                       </span>
                     ) : (
-                      <span className="px-2 py-0.5 rounded-md text-[10px] font-mono bg-emerald-50 text-emerald-700 border border-emerald-200 font-semibold">
+                      <span className="px-2 py-0.5 rounded-md text-[10px] font-mono bg-emerald-950/60 text-emerald-300 border border-emerald-500/30 font-semibold">
                         Open for Uploads
                       </span>
                     )}
@@ -177,7 +177,7 @@ export default function DropZonesPage() {
                   {!isClosed && (
                     <button
                       onClick={() => revokeMutation.mutate(dropZone.id)}
-                      className="neu-btn px-3.5 py-1.5 rounded-xl text-rose-600 hover:text-rose-700 text-xs font-semibold transition-all cursor-pointer"
+                      className="neu-btn px-3.5 py-1.5 rounded-xl text-rose-400 hover:text-rose-300 text-xs font-semibold transition-all cursor-pointer"
                     >
                       Close Drop Zone
                     </button>

@@ -151,13 +151,13 @@ export default function SharedPage() {
                     )}
 
                     {share.requireOtp && (
-                      <span className="flex items-center gap-1 text-[10px] font-mono bg-blue-50 text-blue-700 border border-blue-200 px-1.5 py-0.5 rounded-md font-medium">
+                      <span className="flex items-center gap-1 text-[10px] font-mono bg-indigo-950/60 text-indigo-300 border border-indigo-500/30 px-1.5 py-0.5 rounded-md font-medium">
                         <MailCheck className="w-3 h-3" /> OTP Protected
                       </span>
                     )}
 
                     {share.viewOnly && (
-                      <span className="flex items-center gap-1 text-[10px] font-mono bg-purple-50 text-purple-700 border border-purple-200 px-1.5 py-0.5 rounded-md font-medium">
+                      <span className="flex items-center gap-1 text-[10px] font-mono bg-purple-950/60 text-purple-300 border border-purple-500/30 px-1.5 py-0.5 rounded-md font-medium">
                         <Eye className="w-3 h-3" /> View Only
                       </span>
                     )}
@@ -183,7 +183,7 @@ export default function SharedPage() {
                   {!isRevoked && (
                     <button
                       onClick={() => revokeMutation.mutate(share.id)}
-                      className="neu-btn px-3.5 py-1.5 rounded-xl text-rose-600 hover:text-rose-700 text-xs font-semibold transition-all cursor-pointer"
+                      className="neu-btn px-3.5 py-1.5 rounded-xl text-rose-400 hover:text-rose-300 text-xs font-semibold transition-all cursor-pointer"
                     >
                       Revoke Link
                     </button>

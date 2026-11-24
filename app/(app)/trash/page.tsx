@@ -91,7 +91,7 @@ export default function TrashPage() {
         {trashFiles.length > 0 && (
           <button
             onClick={handleEmptyTrash}
-            className="px-3.5 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 border border-rose-200 text-xs font-medium transition-colors shadow-2xs"
+            className="px-3.5 py-1.5 rounded-xl bg-rose-500/20 hover:bg-rose-500/30 text-rose-300 border border-rose-500/30 text-xs font-semibold transition-colors cursor-pointer"
           >
             Empty Trash
           </button>
@@ -99,8 +99,8 @@ export default function TrashPage() {
       </div>
 
       {/* 30-Day Purge Notice */}
-      <div className="flex items-center gap-2.5 p-3.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 shadow-2xs">
-        <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0" />
+      <div className="flex items-center gap-2.5 p-3.5 rounded-xl bg-amber-950/30 border border-amber-500/20 text-xs text-amber-200">
+        <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0" />
         <span>
           Files placed in Trash older than 30 days are automatically destroyed by the cron maintenance job.
         </span>
@@ -138,7 +138,7 @@ export default function TrashPage() {
                 <button
                   onClick={() => restoreMutation.mutate(file.id)}
                   title="Restore"
-                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 hover:bg-blue-100 text-blue-700 text-xs font-medium border border-blue-200 transition-colors"
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-950/60 hover:bg-indigo-900/60 text-indigo-300 text-xs font-semibold border border-indigo-500/30 transition-colors cursor-pointer"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
                   <span>Restore</span>
@@ -146,7 +146,7 @@ export default function TrashPage() {
                 <button
                   onClick={() => permanentDeleteMutation.mutate(file.id)}
                   title="Permanently erase"
-                  className="p-1.5 text-slate-400 hover:text-rose-600 rounded-lg transition-colors"
+                  className="p-1.5 text-slate-400 hover:text-rose-400 rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
                 >
                   <Trash2 className="w-4 h-4" />
                 </button>
