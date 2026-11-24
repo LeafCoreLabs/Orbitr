@@ -242,7 +242,7 @@ export default function SecurityPage() {
           onClick={() => setActiveTab("sessions")}
           className={`flex items-center gap-2 py-2 px-3.5 rounded-xl font-semibold transition-all cursor-pointer ${
             activeTab === "sessions"
-              ? "neu-flat text-[#00a2ff] bg-[#1c1f26]"
+              ? "neu-flat text-indigo-300 bg-[#1c1f26]"
               : "text-slate-400 hover:text-slate-200"
           }`}
         >
@@ -254,7 +254,7 @@ export default function SecurityPage() {
           onClick={() => setActiveTab("activity")}
           className={`flex items-center gap-2 py-2 px-3.5 rounded-xl font-semibold transition-all cursor-pointer ${
             activeTab === "activity"
-              ? "neu-flat text-[#00a2ff] bg-[#1c1f26]"
+              ? "neu-flat text-indigo-300 bg-[#1c1f26]"
               : "text-slate-400 hover:text-slate-200"
           }`}
         >
@@ -266,7 +266,7 @@ export default function SecurityPage() {
           onClick={() => setActiveTab("totp")}
           className={`flex items-center gap-2 py-2 px-3.5 rounded-xl font-semibold transition-all cursor-pointer ${
             activeTab === "totp"
-              ? "neu-flat text-[#00a2ff] bg-[#1c1f26]"
+              ? "neu-flat text-indigo-300 bg-[#1c1f26]"
               : "text-slate-400 hover:text-slate-200"
           }`}
         >
@@ -278,7 +278,7 @@ export default function SecurityPage() {
           onClick={() => setActiveTab("passkeys")}
           className={`flex items-center gap-2 py-2 px-3.5 rounded-xl font-semibold transition-all cursor-pointer ${
             activeTab === "passkeys"
-              ? "neu-flat text-[#00a2ff] bg-[#1c1f26]"
+              ? "neu-flat text-indigo-300 bg-[#1c1f26]"
               : "text-slate-400 hover:text-slate-200"
           }`}
         >
@@ -316,7 +316,7 @@ export default function SecurityPage() {
                     {s.deviceLabel.toLowerCase().includes("mobile") ||
                     s.deviceLabel.toLowerCase().includes("android") ||
                     s.deviceLabel.toLowerCase().includes("iphone") ? (
-                      <Smartphone className="w-5 h-5 text-[#00a2ff]" />
+                      <Smartphone className="w-5 h-5 text-indigo-400" />
                     ) : (
                       <Laptop className="w-5 h-5 text-indigo-600" />
                     )}

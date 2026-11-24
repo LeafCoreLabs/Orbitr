@@ -20,6 +20,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   pages: {
     signIn: "/login",
     error: "/login",
+    signOut: "/signout",
   },
   providers: [
     ...(process.env.AUTH_GOOGLE_ID &&

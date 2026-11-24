@@ -276,7 +276,7 @@ export default function DrivePage() {
           <button
             onClick={() => setFilterType("")}
             className={`px-3 py-1 rounded-lg font-semibold transition-all cursor-pointer ${
-              filterType === "" ? "neu-flat text-[#00a2ff] bg-[#1c1f26]" : "text-slate-400 hover:text-slate-200"
+              filterType === "" ? "neu-flat text-indigo-300 bg-[#1c1f26]" : "text-slate-400 hover:text-slate-200"
             }`}
           >
             All Files
@@ -284,7 +284,7 @@ export default function DrivePage() {
           <button
             onClick={() => setFilterType("image")}
             className={`px-3 py-1 rounded-lg font-semibold transition-all cursor-pointer ${
-              filterType === "image" ? "neu-flat text-[#00a2ff] bg-[#1c1f26]" : "text-slate-400 hover:text-slate-200"
+              filterType === "image" ? "neu-flat text-indigo-300 bg-[#1c1f26]" : "text-slate-400 hover:text-slate-200"
             }`}
           >
             Images
@@ -292,7 +292,7 @@ export default function DrivePage() {
           <button
             onClick={() => setFilterType("pdf")}
             className={`px-3 py-1 rounded-lg font-semibold transition-all cursor-pointer ${
-              filterType === "pdf" ? "neu-flat text-[#00a2ff] bg-[#1c1f26]" : "text-slate-400 hover:text-slate-200"
+              filterType === "pdf" ? "neu-flat text-indigo-300 bg-[#1c1f26]" : "text-slate-400 hover:text-slate-200"
             }`}
           >
             Documents
@@ -300,7 +300,7 @@ export default function DrivePage() {
           <button
             onClick={() => setFilterType("video")}
             className={`px-3 py-1 rounded-lg font-semibold transition-all cursor-pointer ${
-              filterType === "video" ? "neu-flat text-[#00a2ff] bg-[#1c1f26]" : "text-slate-400 hover:text-slate-200"
+              filterType === "video" ? "neu-flat text-indigo-300 bg-[#1c1f26]" : "text-slate-400 hover:text-slate-200"
             }`}
           >
             Videos

@@ -125,7 +125,7 @@ export default function ForgotPasswordPage() {
           href="/login"
           className="inline-flex items-center gap-2 text-xs font-semibold text-slate-300 hover:text-white px-3.5 py-2 rounded-xl neu-btn transition-all group"
         >
-          <ArrowLeft className="w-3.5 h-3.5 text-slate-400 group-hover:text-[#00a2ff] group-hover:-translate-x-0.5 transition-transform" />
+          <ArrowLeft className="w-3.5 h-3.5 text-slate-400 group-hover:text-indigo-400 group-hover:-translate-x-0.5 transition-transform" />
           <span>Back to Sign In</span>
         </Link>
       </div>

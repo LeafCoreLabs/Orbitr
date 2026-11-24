@@ -6,9 +6,10 @@ import { Logo } from "@/components/ui/Logo";
 
 interface TopNavbarProps {
   onOpenQuickTransfer?: () => void;
+  onOpenSignOut?: () => void;
 }
 
-export function TopNavbar({ onOpenQuickTransfer }: TopNavbarProps) {
+export function TopNavbar({ onOpenQuickTransfer, onOpenSignOut }: TopNavbarProps) {
   const triggerCmdK = () => {
     document.dispatchEvent(
       new KeyboardEvent("keydown", { key: "k", metaKey: true, bubbles: true })
@@ -60,13 +61,14 @@ export function TopNavbar({ onOpenQuickTransfer }: TopNavbarProps) {
             <span className="hidden sm:inline">Orbitr Guard</span>
           </div>
 
-          <a
-            href="/api/auth/signout"
-            title="Sign out"
-            className="p-2 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-rose-950/30 transition-colors"
+          <button
+            type="button"
+            onClick={onOpenSignOut || (() => window.dispatchEvent(new CustomEvent("orbitr-open-signout")))}
+            title="Sign out of Orbitr"
+            className="p-2 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-rose-950/30 transition-colors cursor-pointer"
           >
             <LogOut className="w-4 h-4" />
-          </a>
+          </button>
         </div>
       </div>
     </header>

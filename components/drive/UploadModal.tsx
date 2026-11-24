@@ -158,7 +158,7 @@ export function UploadModal({
       >
         <div className="flex items-center justify-between pb-3 border-b border-[#22252e]">
           <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl neu-flat flex items-center justify-center text-[#00a2ff]">
+            <div className="w-9 h-9 rounded-xl neu-flat flex items-center justify-center text-indigo-400">
               <UploadCloud className="w-5 h-5" />
             </div>
             <div>
@@ -181,7 +181,7 @@ export function UploadModal({
             onDragOver={(e) => e.preventDefault()}
             onDrop={handleFileDrop}
             onClick={() => fileInputRef.current?.click()}
-            className="neu-inset rounded-2xl p-8 flex flex-col items-center justify-center gap-3 cursor-pointer transition-all hover:bg-blue-950/20 group border border-slate-800"
+            className="neu-inset rounded-2xl p-8 flex flex-col items-center justify-center gap-3 cursor-pointer transition-all hover:bg-indigo-950/20 group border border-slate-800"
           >
             <input
               type="file"
@@ -189,7 +189,7 @@ export function UploadModal({
               onChange={(e) => e.target.files?.[0] && setSelectedFile(e.target.files[0])}
               className="hidden"
             />
-            <div className="w-14 h-14 rounded-2xl neu-flat flex items-center justify-center text-blue-400 group-hover:scale-105 transition-transform duration-300">
+            <div className="w-14 h-14 rounded-2xl neu-flat flex items-center justify-center text-indigo-400 group-hover:scale-105 transition-transform duration-300">
               <UploadCloud className="w-7 h-7" />
             </div>
             <div className="text-center">
@@ -205,7 +205,7 @@ export function UploadModal({
           <div className="space-y-4">
             <div className="flex items-center justify-between p-4 rounded-xl neu-flat">
               <div className="flex items-center gap-3 overflow-hidden">
-                <div className="w-10 h-10 rounded-xl neu-inset flex items-center justify-center text-blue-400 shrink-0">
+                <div className="w-10 h-10 rounded-xl neu-inset flex items-center justify-center text-indigo-400 shrink-0">
                   <FileIcon className="w-5 h-5" />
                 </div>
                 <div className="truncate">

@@ -25,6 +25,7 @@ import { formatBytes } from "@/lib/utils";
 
 interface CommandPaletteProps {
   onOpenCleaner?: () => void;
+  onOpenSignOut?: () => void;
 }
 
 interface SearchFileResult {
@@ -34,7 +35,7 @@ interface SearchFileResult {
   mimeType: string;
 }
 
-export function CommandPalette({ onOpenCleaner }: CommandPaletteProps) {
+export function CommandPalette({ onOpenCleaner, onOpenSignOut }: CommandPaletteProps) {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [matchingFiles, setMatchingFiles] = useState<SearchFileResult[]>([]);
@@ -233,11 +234,17 @@ export function CommandPalette({ onOpenCleaner }: CommandPaletteProps) {
                 <span className="font-medium text-xs">Account Settings</span>
               </Command.Item>
               <Command.Item
-                onSelect={() => runCommand(() => router.push("/api/auth/signout"))}
-                className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-rose-50 cursor-pointer text-rose-600 transition-colors"
+                onSelect={() => runCommand(() => {
+                  if (onOpenSignOut) {
+                    onOpenSignOut();
+                  } else {
+                    window.dispatchEvent(new CustomEvent("orbitr-open-signout"));
+                  }
+                })}
+                className="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-rose-950/30 cursor-pointer text-rose-400 transition-colors"
               >
-                <LogOut className="w-4 h-4 text-rose-600" />
-                <span className="font-semibold text-xs">Sign Out</span>
+                <LogOut className="w-4 h-4 text-rose-400" />
+                <span className="font-semibold text-xs">Sign Out of Orbitr</span>
               </Command.Item>
             </Command.Group>
           </Command.List>

@@ -201,8 +201,8 @@ export function QuickTransferModal({
         {/* Header */}
         <div className="flex items-center justify-between pb-3 border-b border-[#22252e] text-left">
           <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl neu-flat flex items-center justify-center text-blue-400">
-              <Zap className="w-5 h-5 text-[#00a2ff]" />
+            <div className="w-9 h-9 rounded-xl neu-flat flex items-center justify-center text-indigo-400">
+              <Zap className="w-5 h-5 text-indigo-400" />
             </div>
             <div>
               <h2 className="text-base font-bold text-slate-100">Quick Transfer</h2>
@@ -223,20 +223,20 @@ export function QuickTransferModal({
             type="button"
             onClick={() => setActiveTab("send")}
             className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg font-semibold transition-all cursor-pointer ${
-              activeTab === "send" ? "neu-flat text-[#00a2ff] bg-[#1c1f26]" : "text-slate-400"
+              activeTab === "send" ? "neu-flat text-indigo-300 bg-[#1c1f26]" : "text-slate-400 hover:text-slate-200"
             }`}
           >
-            <ArrowUpCircle className="w-4 h-4 text-[#00a2ff]" />
+            <ArrowUpCircle className="w-4 h-4 text-indigo-400" />
             <span>Send (Share Code)</span>
           </button>
           <button
             type="button"
             onClick={() => setActiveTab("receive")}
             className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg font-semibold transition-all cursor-pointer ${
-              activeTab === "receive" ? "neu-flat text-[#00a2ff] bg-[#1c1f26]" : "text-slate-400"
+              activeTab === "receive" ? "neu-flat text-indigo-300 bg-[#1c1f26]" : "text-slate-400 hover:text-slate-200"
             }`}
           >
-            <ArrowDownCircle className="w-4 h-4 text-[#00a2ff]" />
+            <ArrowDownCircle className="w-4 h-4 text-indigo-400" />
             <span>Receive (Enter Code)</span>
           </button>
         </div>

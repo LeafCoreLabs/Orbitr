@@ -107,7 +107,7 @@ export function VaultUnlockModal({ isOpen, onUnlocked }: VaultUnlockModalProps) 
         className="relative w-full max-w-md bg-[#15171c]/95 backdrop-blur-xl rounded-2xl shader-card p-6 space-y-5 shadow-2xl"
       >
         <div className="text-center space-y-2">
-          <div className="w-14 h-14 rounded-2xl neu-flat flex items-center justify-center mx-auto text-[#00a2ff]">
+          <div className="w-14 h-14 rounded-2xl neu-flat flex items-center justify-center mx-auto text-indigo-400">
             <Shield className="w-7 h-7" />
           </div>
           <h2 className="text-lg font-bold text-slate-100">

@@ -174,8 +174,8 @@ export function SmartStorageCleanerModal({
         {/* Header */}
         <div className="flex items-center justify-between pb-3 border-b border-[#22252e] shrink-0">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl neu-flat flex items-center justify-center text-[#00a2ff]">
-              <Sparkles className="w-5 h-5 text-[#00a2ff]" />
+            <div className="w-10 h-10 rounded-xl neu-flat flex items-center justify-center text-indigo-400">
+              <Sparkles className="w-5 h-5 text-indigo-400" />
             </div>
             <div>
               <h2 className="text-base font-bold text-slate-100">Smart Storage Cleaner</h2>
@@ -195,7 +195,7 @@ export function SmartStorageCleanerModal({
         {/* Metric Banner */}
         <div className="p-4 rounded-xl neu-flat flex items-center justify-between gap-4 shrink-0">
           <div className="flex items-center gap-3">
-            <HardDrive className="w-6 h-6 text-[#00a2ff] shrink-0" />
+            <HardDrive className="w-6 h-6 text-indigo-400 shrink-0" />
             <div>
               <p className="text-xs text-slate-400 font-semibold uppercase tracking-wider">
                 Total Recoverable Space
@@ -207,7 +207,7 @@ export function SmartStorageCleanerModal({
           </div>
           {selectedIds.length > 0 && (
             <div className="text-right">
-              <p className="text-xs text-[#00a2ff] font-semibold">Selected for Cleaning</p>
+              <p className="text-xs text-indigo-400 font-semibold">Selected for Cleaning</p>
               <p className="text-sm font-bold text-slate-100 font-mono">
                 {formatBytes(selectedReclaimableBytes)} ({selectedIds.length} files)
               </p>
@@ -221,40 +221,40 @@ export function SmartStorageCleanerModal({
             type="button"
             onClick={() => setActiveCategory("duplicates")}
             className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-lg font-semibold transition-all cursor-pointer ${
-              activeCategory === "duplicates" ? "neu-flat text-[#00a2ff] bg-[#1c1f26]" : "text-slate-400"
+              activeCategory === "duplicates" ? "neu-flat text-indigo-300 bg-[#1c1f26]" : "text-slate-400 hover:text-slate-200"
             }`}
           >
-            <Copy className="w-4 h-4 text-[#00a2ff]" />
+            <Copy className="w-4 h-4 text-indigo-400" />
             <span>Duplicate Files ({duplicates.length})</span>
           </button>
           <button
             type="button"
             onClick={() => setActiveCategory("large")}
             className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-lg font-semibold transition-all cursor-pointer ${
-              activeCategory === "large" ? "neu-flat text-[#00a2ff] bg-[#1c1f26]" : "text-slate-400"
+              activeCategory === "large" ? "neu-flat text-indigo-300 bg-[#1c1f26]" : "text-slate-400 hover:text-slate-200"
             }`}
           >
-            <AlertTriangle className="w-4 h-4 text-[#00a2ff]" />
+            <AlertTriangle className="w-4 h-4 text-indigo-400" />
             <span>Large Files ({largeFiles.length})</span>
           </button>
           <button
             type="button"
             onClick={() => setActiveCategory("old")}
             className={`flex-1 flex items-center justify-center gap-2 py-2 rounded-lg font-semibold transition-all cursor-pointer ${
-              activeCategory === "old" ? "neu-flat text-[#00a2ff] bg-[#1c1f26]" : "text-slate-400"
+              activeCategory === "old" ? "neu-flat text-indigo-300 bg-[#1c1f26]" : "text-slate-400 hover:text-slate-200"
             }`}
           >
-            <Clock className="w-4 h-4 text-[#00a2ff]" />
+            <Clock className="w-4 h-4 text-indigo-400" />
             <span>Old Files ({oldFiles.length})</span>
           </button>
         </div>
 
         {/* Action Bar */}
-        <div className="flex items-center justify-between text-xs text-slate-600 px-1 shrink-0">
+        <div className="flex items-center justify-between text-xs text-slate-400 px-1 shrink-0">
           <button
             type="button"
             onClick={selectAllCurrent}
-            className="neu-btn px-3 py-1.5 rounded-lg font-semibold cursor-pointer text-slate-700"
+            className="neu-btn px-3 py-1.5 rounded-lg font-semibold cursor-pointer text-slate-200 hover:text-white"
           >
             {currentList.length > 0 &&
             currentList.every((f) => selectedIds.includes(f.id))

@@ -108,7 +108,7 @@ export function ShareModal({
         {/* Header */}
         <div className="flex items-center justify-between pb-3 border-b border-[#22252e]">
           <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl neu-flat flex items-center justify-center text-[#00a2ff]">
+            <div className="w-9 h-9 rounded-xl neu-flat flex items-center justify-center text-indigo-400">
               <Share2 className="w-5 h-5" />
             </div>
             <div>

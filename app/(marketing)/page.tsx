@@ -756,11 +756,10 @@ export default function MarketingLandingPage() {
                       <button
                         key={sec.id}
                         onClick={() => scrollToSection(sec.id)}
-                        className={`py-1.5 px-0.5 rounded-lg text-center flex flex-col items-center justify-center transition-all cursor-pointer ${
-                          isActive
-                            ? "bg-gradient-to-b from-[#1b1930] to-[#252244] border border-indigo-500/50 text-indigo-300 shadow-[0_0_10px_rgba(129,140,248,0.25)]"
-                            : "neu-inset text-slate-400 hover:text-slate-200"
-                        }`}
+                        className={`py-1.5 px-0.5 rounded-lg text-center flex flex-col items-center justify-center transition-all cursor-pointer ${isActive
+                          ? "bg-gradient-to-b from-[#1b1930] to-[#252244] border border-indigo-500/50 text-indigo-300 shadow-[0_0_10px_rgba(129,140,248,0.25)]"
+                          : "neu-inset text-slate-400 hover:text-slate-200"
+                          }`}
                         title={sec.label}
                       >
                         <span className={`text-[8.5px] font-mono font-bold ${isActive ? "text-indigo-300" : "text-slate-400"}`}>
@@ -890,11 +889,10 @@ export default function MarketingLandingPage() {
                           key={s.level}
                           type="button"
                           onClick={() => setSpeedLevel(s.level)}
-                          className={`py-1 px-1 rounded-lg text-center text-[9.5px] font-mono font-bold transition-all cursor-pointer ${
-                            isSelected
-                              ? "bg-[#6366f1] text-white shadow-[0_0_10px_rgba(99,102,241,0.5)] border border-[#818cf8]"
-                              : "neu-inset text-slate-400 hover:text-slate-200"
-                          }`}
+                          className={`py-1 px-1 rounded-lg text-center text-[9.5px] font-mono font-bold transition-all cursor-pointer ${isSelected
+                            ? "bg-[#6366f1] text-white shadow-[0_0_10px_rgba(99,102,241,0.5)] border border-[#818cf8]"
+                            : "neu-inset text-slate-400 hover:text-slate-200"
+                            }`}
                         >
                           {s.label}
                         </button>
@@ -912,11 +910,10 @@ export default function MarketingLandingPage() {
                         key={m.id}
                         type="button"
                         onClick={() => setSelectedDialMode(m.id as any)}
-                        className={`py-1 px-1 rounded-lg text-center text-[9.5px] font-mono font-bold transition-all cursor-pointer ${
-                          isSelected
-                            ? "bg-gradient-to-b from-[#1b1930] to-[#252244] text-indigo-300 border border-indigo-500/50 shadow-[0_0_8px_rgba(129,140,248,0.25)]"
-                            : "neu-inset text-slate-400 hover:text-slate-200"
-                        }`}
+                        className={`py-1 px-1 rounded-lg text-center text-[9.5px] font-mono font-bold transition-all cursor-pointer ${isSelected
+                          ? "bg-gradient-to-b from-[#1b1930] to-[#252244] text-indigo-300 border border-indigo-500/50 shadow-[0_0_8px_rgba(129,140,248,0.25)]"
+                          : "neu-inset text-slate-400 hover:text-slate-200"
+                          }`}
                       >
                         {m.label}
                       </button>
@@ -977,7 +974,7 @@ export default function MarketingLandingPage() {
                           d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"
                         />
                       </svg>
-                      <span>Continue with Google</span>
+                      <span className="text-slate-200 font-semibold">Continue with Google</span>
                     </Link>
 
                     {/* Passkey Button */}

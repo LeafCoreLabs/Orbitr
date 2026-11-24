@@ -14,23 +14,29 @@ import {
   Plus,
   Zap,
   Sparkles,
+  LogOut,
 } from "lucide-react";
 import { Logo } from "@/components/ui/Logo";
 import { cn, formatBytes } from "@/lib/utils";
 import { useQuery } from "@tanstack/react-query";
+import { useSession } from "next-auth/react";
 
 interface AppSidebarProps {
   onOpenUpload?: () => void;
   onOpenQuickTransfer?: () => void;
   onOpenCleaner?: () => void;
+  onOpenSignOut?: () => void;
 }
 
 export function AppSidebar({
   onOpenUpload,
   onOpenQuickTransfer,
   onOpenCleaner,
+  onOpenSignOut,
 }: AppSidebarProps) {
   const pathname = usePathname();
+  const sessionResult = useSession?.();
+  const session = sessionResult?.data;
 
   // Query storage quota
   const { data } = useQuery({
@@ -86,7 +92,7 @@ export function AppSidebar({
               className={cn(
                 "flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-medium transition-all",
                 isActive
-                  ? "neu-inset text-blue-400 font-bold"
+                  ? "neu-inset text-indigo-400 font-bold"
                   : "text-slate-400 hover:text-slate-200 hover:bg-[#1a1d24]"
               )}
             >
@@ -94,13 +100,13 @@ export function AppSidebar({
                 <Icon
                   className={cn(
                     "w-4 h-4",
-                    isActive ? "text-[#00a2ff]" : "text-slate-500"
+                    isActive ? "text-indigo-400" : "text-slate-500"
                   )}
                 />
                 <span>{item.label}</span>
               </div>
               {item.badge && (
-                <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#091829] text-[#00a2ff] border border-[#0077ff]/40 font-mono">
+                <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#1b1930] text-indigo-300 border border-indigo-500/30 font-mono">
                   {item.badge}
                 </span>
               )}
@@ -114,9 +120,9 @@ export function AppSidebar({
         <div className="pt-2 pb-4">
           <button
             onClick={onOpenQuickTransfer}
-            className="w-full flex items-center gap-2 px-3 py-2.5 rounded-xl neu-btn text-blue-300 text-xs font-semibold cursor-pointer active:scale-98"
+            className="w-full flex items-center gap-2 px-3 py-2.5 rounded-xl neu-btn text-indigo-300 text-xs font-semibold cursor-pointer active:scale-98"
           >
-            <Zap className="w-3.5 h-3.5 text-blue-400" />
+            <Zap className="w-3.5 h-3.5 text-indigo-400" />
             <span>Quick Transfer (PC &harr; Phone)</span>
           </button>
         </div>
@@ -153,6 +159,31 @@ export function AppSidebar({
             </button>
           )}
         </div>
+      </div>
+
+      {/* User Session & Sign Out Pod */}
+      <div className="pt-3 border-t border-[#22252e] flex items-center justify-between">
+        <div className="flex items-center gap-2.5 min-w-0">
+          <div className="w-8 h-8 rounded-xl neu-btn flex items-center justify-center text-xs font-bold text-slate-300 shrink-0">
+            {session?.user?.name?.[0]?.toUpperCase() || session?.user?.email?.[0]?.toUpperCase() || "O"}
+          </div>
+          <div className="min-w-0">
+            <p className="text-xs font-semibold text-slate-200 truncate">
+              {session?.user?.name || "Orbitr User"}
+            </p>
+            <p className="text-[10px] text-slate-500 font-mono truncate">
+              {session?.user?.email || "Encrypted Session"}
+            </p>
+          </div>
+        </div>
+
+        <button
+          onClick={onOpenSignOut || (() => window.dispatchEvent(new CustomEvent("orbitr-open-signout")))}
+          title="Sign out of Orbitr"
+          className="p-2 rounded-lg text-slate-400 hover:text-rose-400 hover:bg-rose-950/30 transition-colors cursor-pointer"
+        >
+          <LogOut className="w-4 h-4" />
+        </button>
       </div>
     </aside>
   );
