@@ -60,6 +60,7 @@ export default function LoginPage() {
       }
 
       toast.success("Welcome back! Loading your Orbitr drive...");
+      sessionStorage.setItem("orbitr_just_logged_in", "true");
       router.push("/drive");
       router.refresh();
     } catch (err: unknown) {
@@ -80,6 +81,7 @@ export default function LoginPage() {
         return;
       }
       if (res?.url) {
+        sessionStorage.setItem("orbitr_just_logged_in", "true");
         window.location.href = res.url;
       }
     } catch (err) {

@@ -4,7 +4,7 @@ import { auth } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { authenticators, passkeyChallenges, activityLog } from "@/lib/db/schema";
 import { eq, and, gt } from "drizzle-orm";
-import { getRpId, getExpectedOrigin } from "@/lib/passkey";
+import { getRpId, getExpectedOrigin, getAllowedOrigins } from "@/lib/passkey";
 import crypto from "crypto";
 
 export async function POST(req: NextRequest) {
@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
 
     const expectedChallenge = challenges[0].challenge;
     const rpID = getRpId(req);
-    const expectedOrigin = getExpectedOrigin(req);
+    const expectedOrigin = getAllowedOrigins(req);
 
     // 2. Verify registration response
     const verification = await verifyRegistrationResponse({

@@ -33,6 +33,7 @@ export async function POST(req: NextRequest) {
       userName: userEmail,
       userDisplayName: userName,
       attestationType: "none",
+      supportedAlgorithmIDs: [-7, -257], // -7 is ES256 (Android/Chrome/iOS), -257 is RS256 (Windows Hello PIN & TPM)
       excludeCredentials: userAuthenticators.map((a) => ({
         id: Buffer.from(a.id, "base64url"),
         type: "public-key" as const,

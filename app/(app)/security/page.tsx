@@ -487,7 +487,7 @@ export default function SecurityPage() {
         <div className="shader-card rounded-2xl p-6 shadow-md space-y-6 bg-[#15171c]/95 border border-[#22252e]">
           <div className="flex items-start justify-between gap-4">
             <div className="flex gap-4">
-              <div className="w-14 h-14 rounded-2xl neu-flat flex items-center justify-center text-blue-400 shrink-0">
+              <div className="w-14 h-14 rounded-2xl neu-flat flex items-center justify-center text-indigo-400 shrink-0">
                 <Fingerprint className="w-7 h-7" />
               </div>
               <div>
@@ -495,7 +495,7 @@ export default function SecurityPage() {
                   Passwordless Passkeys & Biometrics
                 </h3>
                 <p className="text-xs text-slate-400 mt-1 max-w-xl leading-relaxed font-medium">
-                  Sign in instantly with Windows Hello, Apple Touch ID / Face ID, Android biometrics, or hardware security keys (FIDO2 / WebAuthn). Passkeys are cryptographically resistant to phishing and server breaches.
+                  Sign in instantly with Windows Hello PIN, Android biometrics & fingerprint, Apple Touch ID / Face ID, or hardware security keys (FIDO2 / WebAuthn). Passkeys are cryptographically resistant to phishing and server breaches.
                 </p>
               </div>
             </div>
@@ -503,25 +503,25 @@ export default function SecurityPage() {
             <button
               onClick={handleRegisterPasskey}
               disabled={registeringPasskey}
-              className="neu-btn flex items-center gap-1.5 px-4 py-2.5 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold rounded-xl text-xs shadow-md transition-all shrink-0 cursor-pointer disabled:opacity-50"
+              className="neu-btn-primary flex items-center gap-1.5 px-4 py-2.5 text-white font-semibold rounded-xl text-xs shadow-md transition-all shrink-0 cursor-pointer disabled:opacity-50"
             >
               <Plus className="w-4 h-4" />
               <span>{registeringPasskey ? "Registering..." : "Add This Device Passkey"}</span>
             </button>
           </div>
 
-          <div className="border-t border-slate-800 pt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="border-t border-[#262a34] pt-4 grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="p-4 rounded-xl neu-flat space-y-1">
-              <span className="text-[11px] font-bold text-blue-700 uppercase tracking-wider">Fast & Frictionless</span>
-              <p className="text-xs text-slate-600">Unlock your Orbitr drive with your fingerprint or face in less than a second.</p>
+              <span className="text-[11px] font-bold text-indigo-300 uppercase tracking-wider">Fast & Frictionless</span>
+              <p className="text-xs text-slate-400">Unlock your Orbitr drive with your Windows Hello PIN or Android fingerprint in less than a second.</p>
             </div>
             <div className="p-4 rounded-xl neu-flat space-y-1">
-              <span className="text-[11px] font-bold text-emerald-700 uppercase tracking-wider">Phishing-Proof</span>
-              <p className="text-xs text-slate-600">Private keys never leave your secure enclave; signatures are bound to your domain.</p>
+              <span className="text-[11px] font-bold text-emerald-400 uppercase tracking-wider">Phishing-Proof</span>
+              <p className="text-xs text-slate-400">Private keys never leave your secure enclave; signatures are cryptographically bound to your domain.</p>
             </div>
             <div className="p-4 rounded-xl neu-flat space-y-1">
-              <span className="text-[11px] font-bold text-indigo-700 uppercase tracking-wider">Universal</span>
-              <p className="text-xs text-slate-600">Works seamlessly across Windows, macOS, iOS, Android, and USB YubiKeys.</p>
+              <span className="text-[11px] font-bold text-purple-300 uppercase tracking-wider">Universal</span>
+              <p className="text-xs text-slate-400">Works seamlessly across Windows Hello, Android, macOS, iOS, and USB FIDO2 keys.</p>
             </div>
           </div>
         </div>

@@ -6,6 +6,7 @@ import { TopNavbar } from "@/components/layout/TopNavbar";
 import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
 import { CommandPalette } from "@/components/layout/CommandPalette";
 import { SignOutModal } from "@/components/auth/SignOutModal";
+import { PasskeyPromptModal } from "@/components/auth/PasskeyPromptModal";
 import { UploadModal } from "@/components/drive/UploadModal";
 import { QuickTransferModal } from "@/components/drive/QuickTransferModal";
 import { SmartStorageCleanerModal } from "@/components/drive/SmartStorageCleanerModal";
@@ -16,19 +17,58 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
   const [quickTransferOpen, setQuickTransferOpen] = useState(false);
   const [cleanerOpen, setCleanerOpen] = useState(false);
   const [signOutOpen, setSignOutOpen] = useState(false);
+  const [passkeyPromptOpen, setPasskeyPromptOpen] = useState(false);
   const queryClient = useQueryClient();
 
-  // Listen for custom events (cleaner, signout)
+  // Listen for custom events (cleaner, signout, passkey prompt)
   React.useEffect(() => {
     const handleOpenCleaner = () => setCleanerOpen(true);
     const handleOpenSignOut = () => setSignOutOpen(true);
+    const handleOpenPasskeyPrompt = () => setPasskeyPromptOpen(true);
 
     window.addEventListener("orbitr-open-cleaner", handleOpenCleaner);
     window.addEventListener("orbitr-open-signout", handleOpenSignOut);
+    window.addEventListener("orbitr-open-passkey-prompt", handleOpenPasskeyPrompt);
+
+    // On login or visit: check if user should be prompted to set up Windows PIN / Android Fingerprint passkey
+    const checkPasskeyPrompt = async () => {
+      try {
+        const justLoggedIn = typeof window !== "undefined" && sessionStorage.getItem("orbitr_just_logged_in") === "true";
+        const dismissedTime = typeof window !== "undefined" ? localStorage.getItem("orbitr_passkey_prompt_dismissed") : null;
+        const isConfigured = typeof window !== "undefined" ? localStorage.getItem("orbitr_passkey_configured") === "true" : false;
+
+        // Skip if already known configured, or if dismissed recently unless just logged in
+        if (isConfigured && !justLoggedIn) return;
+        if (!justLoggedIn && dismissedTime && Date.now() - Number(dismissedTime) < 5 * 24 * 60 * 60 * 1000) {
+          return;
+        }
+
+        const res = await fetch("/api/auth/passkey");
+        if (!res.ok) return;
+        const data = await res.json();
+        if (data.authenticated && !data.hasPasskey) {
+          // Open prompt after smooth entrance
+          setTimeout(() => {
+            setPasskeyPromptOpen(true);
+          }, 800);
+        } else if (data.hasPasskey) {
+          localStorage.setItem("orbitr_passkey_configured", "true");
+        }
+      } catch (err) {
+        console.error("[Passkey Check Error]", err);
+      } finally {
+        if (typeof window !== "undefined") {
+          sessionStorage.removeItem("orbitr_just_logged_in");
+        }
+      }
+    };
+
+    checkPasskeyPrompt();
 
     return () => {
       window.removeEventListener("orbitr-open-cleaner", handleOpenCleaner);
       window.removeEventListener("orbitr-open-signout", handleOpenSignOut);
+      window.removeEventListener("orbitr-open-passkey-prompt", handleOpenPasskeyPrompt);
     };
   }, []);
 
@@ -71,6 +111,14 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       <SignOutModal
         isOpen={signOutOpen}
         onClose={() => setSignOutOpen(false)}
+      />
+
+      <PasskeyPromptModal
+        isOpen={passkeyPromptOpen}
+        onClose={() => setPasskeyPromptOpen(false)}
+        onSuccess={() => {
+          queryClient.invalidateQueries({ queryKey: ["passkeys"] });
+        }}
       />
 
       <UploadModal
